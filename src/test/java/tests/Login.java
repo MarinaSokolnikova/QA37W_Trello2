@@ -1,5 +1,6 @@
 package tests;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -19,6 +20,21 @@ public class Login extends TestBase{
 
     @Test
     public void login1(){
+
+        User user = new User().setEmail("sokolnikovam92@gmail.com").setPassword("FF22Kseriesqq!");
+        app.getUser().initLogin();
+        app.getUser().pause(2000);
+        app.getUser().fillLoginForm(user);
+        app.getUser().submitLogin();
+        app.getUser().pause(2000);
+
+        Assert.assertTrue(app.getUser().isLogged());
+
+    }
+
+    @Test
+    public void login2(){
+
         app.getUser().initLogin();
         app.getUser().pause(2000);
         app.getUser().fillLoginForm("sokolnikovam92@gmail.com", "FF22Kseriesqq!");

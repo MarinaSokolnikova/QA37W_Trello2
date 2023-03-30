@@ -1,5 +1,6 @@
 package manage;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,13 @@ public class UserHelper extends HelperBase{
         click(By.cssSelector("#login"));
         pause(2000);
         type(By.cssSelector("#password"), password);
+    }
+
+    public void fillLoginForm(User user) {
+        type(By.cssSelector("#user"), user.getEmail());
+        click(By.cssSelector("#login"));
+        pause(2000);
+        type(By.cssSelector("#password"), user.getPassword());
     }
 
     public void submitLogin() {
